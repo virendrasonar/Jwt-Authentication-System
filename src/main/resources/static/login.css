@@ -1,0 +1,169 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#0b1120 0%,#172554 50%,#1d4ed8 100%);
+}
+
+.container{
+    width:420px;
+    max-width:90%;
+    background:rgba(255,255,255,0.08);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:18px;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+    padding:30px;
+    color:#fff;
+}
+
+.logo{
+    font-size:48px;
+    text-align:center;
+    margin-bottom:10px;
+}
+
+h1{
+    text-align:center;
+    font-size:28px;
+    font-weight:600;
+    margin-bottom:8px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#d1d5db;
+    font-size:14px;
+    margin-bottom:25px;
+}
+
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group input{
+    width:100%;
+    padding:13px 15px;
+    border:1px solid #d1d5db;
+    outline:none;
+    border-radius:10px;
+    background:#ffffff;
+    color:#1f2937;
+    font-size:15px;
+    transition:0.3s;
+}
+
+.input-group input::placeholder{
+    color:#6b7280;
+}
+
+.input-group input:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 8px rgba(37,99,235,.3);
+}
+
+.password-box{
+    position:relative;
+}
+
+.password-box input{
+    padding-right:45px;
+}
+
+.eye{
+    position:absolute;
+    top:50%;
+    right:15px;
+    transform:translateY(-50%);
+    cursor:pointer;
+    font-size:18px;
+    color:#6b7280;
+}
+
+button{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,#3b82f6,#2563eb);
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 20px rgba(37,99,235,.45);
+}
+
+button:active{
+    transform:scale(.98);
+}
+
+#message{
+    text-align:center;
+    margin-top:15px;
+    min-height:20px;
+    font-size:14px;
+    font-weight:500;
+}
+
+.footer{
+    text-align:center;
+    color:#d1d5db;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.footer a{
+    color:#60a5fa;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.footer a:hover{
+    color:#93c5fd;
+    text-decoration:underline;
+}
+
+@media(max-width:480px){
+
+.container{
+    width:92%;
+    padding:22px;
+}
+
+.logo{
+    font-size:42px;
+}
+
+h1{
+    font-size:24px;
+}
+
+.subtitle{
+    font-size:13px;
+}
+
+.input-group input{
+    padding:12px;
+}
+
+button{
+    padding:12px;
+}
+
+}

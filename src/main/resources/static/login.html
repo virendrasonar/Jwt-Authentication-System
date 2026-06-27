@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="logo">🔐</div>
+
+        <h1>Welcome Back</h1>
+        <p class="subtitle">Login to continue</p>
+
+        <div class="input-group">
+            <input
+                type="email"
+                id="email"
+                placeholder="📧 Email Address"
+                autocomplete="email">
+        </div>
+
+        <div class="input-group">
+
+            <div class="password-box">
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="🔒 Password"
+                    autocomplete="current-password">
+
+                <span
+                    class="eye"
+                    onclick="togglePassword('password', this)">
+                    👁
+                </span>
+
+            </div>
+
+        </div>
+
+        <button onclick="login()">
+            Login
+        </button>
+
+        <p id="message"></p>
+
+        <div class="footer">
+            Don't have an account?
+            <br>
+            <a href="signup.html">Create Account</a>
+        </div>
+
+    </div>
+
+    <script src="login.js"></script>
+
+</body>
+
+</html>

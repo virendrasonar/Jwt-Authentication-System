@@ -132,6 +132,18 @@ body {
     font-size: 30px;
 }
 
+.demo-notice {
+    margin: -12px 0 20px;
+    padding: 12px 14px;
+    border: 1px solid #bfdbfe;
+    border-radius: 8px;
+    background: #eff6ff;
+    color: #1e3a8a;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.45;
+}
+
 .field {
     display: grid;
     gap: 8px;

@@ -31,7 +31,7 @@ async function apiFetch(url, options = {}) {
 
 async function loadDashboard() {
     try {
-        const response = await apiFetch("http://localhost:8080/dashboard");
+        const response = await apiFetch("/dashboard");
 
         if (!response.ok) {
             throw new Error("Unable to load dashboard");
@@ -67,7 +67,7 @@ async function loadUsers() {
     const usersTable = document.getElementById("usersTable");
 
     try {
-        const response = await apiFetch("http://localhost:8080/admin/users");
+        const response = await apiFetch("/admin/users");
 
         if (!response.ok) {
             throw new Error("Unable to load users");
@@ -140,7 +140,7 @@ async function saveUser(event) {
 
     try {
         const response = await apiFetch(
-            id ? "http://localhost:8080/admin/users/" + id : "http://localhost:8080/admin/users",
+            id ? "/admin/users/" + id : "/admin/users",
             {
                 method: id ? "PUT" : "POST",
                 body: JSON.stringify(payload)
@@ -196,7 +196,7 @@ async function deleteUser(id) {
     }
 
     try {
-        const response = await apiFetch("http://localhost:8080/admin/users/" + id, {
+        const response = await apiFetch("/admin/users/" + id, {
             method: "DELETE"
         });
 

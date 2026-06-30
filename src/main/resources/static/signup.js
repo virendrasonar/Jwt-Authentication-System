@@ -24,7 +24,7 @@ async function signup() {
     }
 
     if (!terms) {
-        message.innerText = "Please accept the Terms & Conditions.";
+        message.innerText = "Please confirm that you understand this is a demo.";
         return;
     }
 
@@ -84,5 +84,5 @@ async function signup() {
     }
 
     button.disabled = false;
-    button.innerText = "Create Account";
+    button.innerText = "Create account";
 }

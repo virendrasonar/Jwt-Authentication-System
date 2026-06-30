@@ -27,6 +27,17 @@ body {
     font-family: Inter, "Segoe UI", Arial, sans-serif;
 }
 
+
+.demo-topbar {
+    width: 100%;
+    padding: 10px 16px;
+    background: #0f172a;
+    color: #ffffff;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.35;
+}
 .auth-shell {
     min-height: 100vh;
     width: min(1120px, calc(100% - 32px));
@@ -135,15 +146,24 @@ body {
 .demo-notice {
     margin: -12px 0 20px;
     padding: 12px 14px;
-    border: 1px solid #bfdbfe;
+    border: 1px solid #fed7aa;
     border-radius: 8px;
-    background: #eff6ff;
-    color: #1e3a8a;
+    background: #fff7ed;
+    color: #9a3412;
     font-size: 13px;
     font-weight: 800;
     line-height: 1.45;
 }
 
+
+.project-footer {
+    margin-top: 14px;
+    color: #667085;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1.45;
+}
 .field {
     display: grid;
     gap: 8px;

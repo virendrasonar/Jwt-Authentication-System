@@ -4,52 +4,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AuthVault is a demo JWT authentication and role-based access control application. Do not enter real passwords.">
-    <title>AuthVault - Sign in</title>
+    <meta name="description" content="AuthVault is a student demo JWT authentication and role-based access control project. Use test-only credentials and do not enter real passwords or personal information.">
+    <title>AuthVault - Demo sign in</title>
     <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
+    <div class="demo-topbar">Student learning project. Not affiliated with any company or real service.</div>
     <main class="auth-shell">
-        <section class="brand-panel" aria-label="Application overview">
+        <section class="brand-panel" aria-label="Demo project overview">
             <div class="brand-mark">AV</div>
             <div>
-                <p class="eyebrow">Secure access workspace</p>
-                <h1>Manage users and protect APIs with role-based access.</h1>
+                <p class="eyebrow">JWT Authentication Demo</p>
+                <h1>Learn JWT authentication, refresh tokens, and role-based access control.</h1>
                 <p class="brand-copy">
-                    Sign in to view your dashboard. Admin accounts can manage users, roles, and protected resources.
+                    This project demonstrates authentication flows using Spring Boot and JWT. Please use sample information only.
                 </p>
             </div>
             <div class="status-card">
                 <span class="status-dot"></span>
                 <div>
-                    <strong>JWT security enabled</strong>
-                    <p>Access tokens, refresh tokens, and role checks are active.</p>
+                    <strong>Demo scope</strong>
+                    <p>Shows JWT access tokens, refresh tokens, and admin/user role checks for coursework practice.</p>
                 </div>
             </div>
         </section>
 
         <section class="auth-card" aria-label="Login form">
             <div class="card-header">
-                <p class="eyebrow">Welcome back</p>
+                <p class="eyebrow">JWT Authentication Demo</p>
                 <h2>Sign in</h2>
-                <p>Use your account credentials to continue.</p>
+                <p>Use a test account created for this project.</p>
             </div>
 
             <div class="demo-notice">
-                AuthVault demo environment. Do not use real passwords or sensitive personal information.
+                Learning project. Please don't enter real passwords or personal information. This application is not affiliated with any real service.
             </div>
 
             <label class="field">
                 <span>Email address</span>
-                <input type="email" id="email" placeholder="admin@example.com" autocomplete="email">
+                <input type="email" id="email" placeholder="demo.user@example.test" autocomplete="off">
                 <small class="field-note">Use a valid email format such as name@domain.com.</small>
             </label>
 
             <label class="field">
                 <span>Password</span>
                 <div class="password-box">
-                    <input type="password" id="password" placeholder="Enter your password" autocomplete="current-password">
+                    <input type="password" id="password" placeholder="Enter test password" autocomplete="off">
                     <button type="button" class="text-button" onclick="togglePassword('password', this)">Show</button>
                 </div>
             </label>
@@ -66,6 +67,8 @@
                 New here?
                 <a href="signup.html">Create an account</a>
             </p>
+
+            <p class="project-footer">Student learning project. Not affiliated with any company.</p>
         </section>
     </main>
 

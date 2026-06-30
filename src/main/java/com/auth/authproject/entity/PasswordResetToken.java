@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.time.Instant;
 
@@ -26,6 +27,12 @@ public class PasswordResetToken {
     @Column(nullable = false)
     private Instant expiryDate;
 
+    @Column(nullable = false)
+    @ColumnDefault("false")
+    private boolean used;
+
+    private Instant usedAt;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -37,6 +44,12 @@ public class PasswordResetToken {
 
     public Instant getExpiryDate() { return expiryDate; }
     public void setExpiryDate(Instant expiryDate) { this.expiryDate = expiryDate; }
+
+    public boolean isUsed() { return used; }
+    public void setUsed(boolean used) { this.used = used; }
+
+    public Instant getUsedAt() { return usedAt; }
+    public void setUsedAt(Instant usedAt) { this.usedAt = usedAt; }
 
     public User getUser() { return user; }
     public void setUser(User user) { this.user = user; }

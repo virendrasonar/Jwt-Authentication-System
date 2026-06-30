@@ -44,8 +44,9 @@ public class PasswordResetService {
         resetToken.setUser(user);
         resetToken.setToken(UUID.randomUUID().toString());
         resetToken.setExpiryDate(Instant.now().plusMillis(RESET_TOKEN_DURATION));
+        resetToken.setUsed(false);
 
-        PasswordResetToken savedToken = passwordResetTokenRepository.save(resetToken);
+        PasswordResetToken savedToken = passwordResetTokenRepository.saveAndFlush(resetToken);
         String resetUrl = "/reset-password.html?token=" + savedToken.getToken();
 
         return new ForgotPasswordResponse(
@@ -60,6 +61,10 @@ public class PasswordResetService {
         PasswordResetToken resetToken = passwordResetTokenRepository.findByToken(token)
                 .orElseThrow(() -> new RuntimeException("Invalid reset token"));
 
+        if (resetToken.isUsed()) {
+            throw new RuntimeException("Reset token has already been used");
+        }
+
         if (resetToken.getExpiryDate().isBefore(Instant.now())) {
             passwordResetTokenRepository.delete(resetToken);
             throw new RuntimeException("Reset token expired");
@@ -70,7 +75,9 @@ public class PasswordResetService {
         userRepository.save(user);
 
         refreshTokenService.deleteByUserId(user.getId());
-        passwordResetTokenRepository.deleteByUser_Id(user.getId());
+        resetToken.setUsed(true);
+        resetToken.setUsedAt(Instant.now());
+        passwordResetTokenRepository.save(resetToken);
 
         return "Password reset successfully";
     }

@@ -238,7 +238,7 @@ Authorization: Bearer <adminAccessToken>
 - `/forgot-password.html`
 - `/reset-password.html`
 
-The frontend resolves API paths through `api-config.js`, which currently targets the Railway deployment.
+The frontend resolves API paths through `api-config.js` using the page's current origin, so local pages call localhost and Railway pages call Railway.
 
 ## Local Development
 

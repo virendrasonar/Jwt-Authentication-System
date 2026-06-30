@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import com.auth.authproject.dto.AdminUserRequest;
 import com.auth.authproject.dto.AdminUserUpdateRequest;
 import com.auth.authproject.dto.UserResponse;
 import com.auth.authproject.entity.User;
+import com.auth.authproject.repository.PasswordResetTokenRepository;
 import com.auth.authproject.repository.UserRepository;
 import com.auth.authproject.service.RefreshTokenService;
 
@@ -31,13 +33,16 @@ public class AdminUserController {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RefreshTokenService refreshTokenService;
+    private final PasswordResetTokenRepository passwordResetTokenRepository;
 
     public AdminUserController(UserRepository userRepository,
                                PasswordEncoder passwordEncoder,
-                               RefreshTokenService refreshTokenService) {
+                               RefreshTokenService refreshTokenService,
+                               PasswordResetTokenRepository passwordResetTokenRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.refreshTokenService = refreshTokenService;
+        this.passwordResetTokenRepository = passwordResetTokenRepository;
     }
 
     @GetMapping
@@ -94,6 +99,7 @@ public class AdminUserController {
     }
 
     @DeleteMapping("/{id}")
+    @Transactional
     public ResponseEntity<Void> deleteUser(@PathVariable Long id, Authentication authentication) {
         User user = findUser(id);
 
@@ -106,6 +112,7 @@ public class AdminUserController {
         }
 
         refreshTokenService.deleteByUserId(user.getId());
+        passwordResetTokenRepository.deleteByUser_Id(user.getId());
         userRepository.delete(user);
 
         return ResponseEntity.noContent().build();

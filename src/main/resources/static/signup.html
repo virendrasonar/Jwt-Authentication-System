@@ -50,22 +50,22 @@
                 <small class="field-note">Use a valid email format such as name@domain.com.</small>
             </label>
 
-            <label class="field">
-                <span>Password</span>
+            <div class="field">
+                <label for="password">Password</label>
                 <div class="password-box">
-                    <input type="password" id="password" placeholder="Create test password" autocomplete="off">
-                    <button type="button" class="text-button" onclick="togglePassword('password', this)">Show</button>
+                    <input type="password" id="password" placeholder="8-20 chars: upper, lower, number, symbol" autocomplete="new-password">
+                    <button type="button" class="text-button" aria-label="Show password" aria-pressed="false" onclick="togglePassword('password', this)">Show</button>
                 </div>
                 <span id="strength" class="strength"></span>
-            </label>
+            </div>
 
-            <label class="field">
-                <span>Confirm demo password</span>
+            <div class="field">
+                <label for="confirmPassword">Confirm demo password</label>
                 <div class="password-box">
-                    <input type="password" id="confirmPassword" placeholder="Repeat test password" autocomplete="off">
-                    <button type="button" class="text-button" onclick="togglePassword('confirmPassword', this)">Show</button>
+                    <input type="password" id="confirmPassword" placeholder="Repeat the same password" autocomplete="new-password">
+                    <button type="button" class="text-button" aria-label="Show confirmed password" aria-pressed="false" onclick="togglePassword('confirmPassword', this)">Show</button>
                 </div>
-            </label>
+            </div>
 
             <label class="checkbox">
                 <input type="checkbox" id="terms">
@@ -92,6 +92,7 @@
             const isPassword = input.type === "password";
             input.type = isPassword ? "text" : "password";
             button.innerText = isPassword ? "Hide" : "Show";
+            button.setAttribute("aria-pressed", String(isPassword));
         }
 
         const password = document.getElementById("password");

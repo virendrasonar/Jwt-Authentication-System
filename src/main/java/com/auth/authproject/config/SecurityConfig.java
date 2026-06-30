@@ -53,7 +53,8 @@ public class SecurityConfig {
                     "/login.js",
                     "/signup.js",
                     "/forgot-password.js",
-                    "/reset-password.js"
+                    "/reset-password.js",
+                    "/api-config.js"
                 ).permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()

@@ -251,7 +251,7 @@ Local is the default profile. It uses an H2 file database at `./data/authproject
 Open:
 
 ```text
-http://localhost:8080/login.html
+https://jwt-authentication-system-production.up.railway.app/login.html
 ```
 
 To create a local admin automatically, run with admin environment variables:

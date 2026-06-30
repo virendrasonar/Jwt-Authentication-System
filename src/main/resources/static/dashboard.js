@@ -13,7 +13,7 @@ document.getElementById("accountNavLink").addEventListener("click", handleAccoun
 loadDashboard();
 
 async function apiFetch(url, options = {}) {
-    const response = await fetch(url, {
+    const response = await fetch(apiUrl(url), {
         ...options,
         headers: {
             "Content-Type": "application/json",

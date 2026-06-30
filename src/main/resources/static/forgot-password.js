@@ -13,7 +13,7 @@ async function requestPasswordReset() {
     }
 
     try {
-        const response = await fetch("/auth/forgot-password", {
+        const response = await fetch(apiUrl("/auth/forgot-password"), {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

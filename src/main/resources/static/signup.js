@@ -33,7 +33,7 @@ async function signup() {
 
     try {
 
-        const response = await fetch("/auth/register", {
+        const response = await fetch(apiUrl("/auth/register"), {
 
             method: "POST",
 

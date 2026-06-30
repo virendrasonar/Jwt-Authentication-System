@@ -71,13 +71,18 @@ public class PasswordResetService {
         }
 
         User user = resetToken.getUser();
+
+        if (passwordEncoder.matches(password, user.getPassword())) {
+            throw new RuntimeException(
+                    "Please enter a new password different from your current password."
+            );
+        }
+
         user.setPassword(passwordEncoder.encode(password));
         userRepository.save(user);
 
         refreshTokenService.deleteByUserId(user.getId());
-        resetToken.setUsed(true);
-        resetToken.setUsedAt(Instant.now());
-        passwordResetTokenRepository.save(resetToken);
+        passwordResetTokenRepository.deleteByUser_Id(user.getId());
 
         return "Password reset successfully";
     }

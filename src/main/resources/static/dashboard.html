@@ -85,10 +85,13 @@
                     <span>Email</span>
                     <input id="userEmail" type="email" placeholder="user@example.com" required>
                 </label>
-                <label id="userPasswordField">
-                    <span>Password</span>
-                    <input id="userPassword" type="password" placeholder="Password">
-                </label>
+                <div id="userPasswordField" class="form-field">
+                    <label for="userPassword">Password</label>
+                    <div class="admin-password-box">
+                        <input id="userPassword" type="password" placeholder="Password" autocomplete="new-password">
+                        <button type="button" id="userPasswordToggle" class="password-toggle" aria-label="Show password" aria-pressed="false" onclick="toggleAdminPassword(this)">Show</button>
+                    </div>
+                </div>
                 <label class="role-select-field">
                     <span>Role</span>
                     <input type="hidden" id="userRole" value="USER">

@@ -171,6 +171,7 @@ function editUser(user) {
     document.getElementById("userPassword").disabled = true;
     document.getElementById("userPassword").value = "";
     document.getElementById("userPassword").required = false;
+    resetAdminPasswordVisibility();
     document.getElementById("userNameField").classList.remove("hidden");
     document.getElementById("userEmailField").classList.remove("hidden");
     document.getElementById("userPasswordField").classList.add("hidden");
@@ -223,6 +224,7 @@ function resetForm() {
     setRole("USER");
     document.getElementById("userPassword").placeholder = "Password";
     document.getElementById("userPassword").required = false;
+    resetAdminPasswordVisibility();
     document.getElementById("userNameField").classList.remove("hidden");
     document.getElementById("userEmailField").classList.remove("hidden");
     document.getElementById("userPasswordField").classList.remove("hidden");
@@ -230,6 +232,26 @@ function resetForm() {
     document.getElementById("saveUserButton").innerText = "Add user";
     document.getElementById("cancelEditButton").classList.add("hidden");
     document.getElementById("adminMessage").innerText = "";
+}
+
+function toggleAdminPassword(button) {
+    const passwordInput = document.getElementById("userPassword");
+    const shouldShow = passwordInput.type === "password";
+
+    passwordInput.type = shouldShow ? "text" : "password";
+    button.innerText = shouldShow ? "Hide" : "Show";
+    button.setAttribute("aria-label", shouldShow ? "Hide password" : "Show password");
+    button.setAttribute("aria-pressed", String(shouldShow));
+}
+
+function resetAdminPasswordVisibility() {
+    const passwordInput = document.getElementById("userPassword");
+    const toggleButton = document.getElementById("userPasswordToggle");
+
+    passwordInput.type = "password";
+    toggleButton.innerText = "Show";
+    toggleButton.setAttribute("aria-label", "Show password");
+    toggleButton.setAttribute("aria-pressed", "false");
 }
 
 function setRole(role) {

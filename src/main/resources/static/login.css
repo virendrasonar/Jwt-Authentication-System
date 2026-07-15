@@ -135,6 +135,10 @@ body {
 }
 
 .card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
     margin-bottom: 20px;
 }
 
@@ -229,10 +233,31 @@ body {
     background: var(--primary-dark);
 }
 
+.secondary-action {
+    flex: 0 0 auto;
+    min-height: 38px;
+    max-width: 150px;
+    margin-top: 8px;
+    padding: 8px 12px;
+    border: 1px solid #cfd8e6;
+    border-radius: 8px;
+    background: #f8fafc;
+    color: var(--primary);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.secondary-action:hover {
+    border-color: var(--primary);
+    background: #eef4ff;
+}
+
 .form-link-row {
     display: flex;
     justify-content: center;
-    margin: -8px 0 16px;
+    margin: 0 0 16px;
 }
 
 .form-link-row a {
@@ -343,6 +368,10 @@ body {
         width: min(100%, 480px);
         justify-self: center;
     }
+
+    .card-header {
+        align-items: center;
+    }
 }
 
 @media (max-width: 520px) {
@@ -366,5 +395,16 @@ body {
 
     .auth-card {
         padding: 20px;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .secondary-action {
+        max-width: none;
+        margin-top: 0;
     }
 }

@@ -1,6 +1,7 @@
 package com.auth.authproject.config;
 
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -25,7 +26,10 @@ public class CorsConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(allowedOrigins);
+        List<String> allowedOriginPatterns = new ArrayList<>(allowedOrigins);
+        allowedOriginPatterns.add("http://localhost:*");
+        allowedOriginPatterns.add("http://127.0.0.1:*");
+        config.setAllowedOriginPatterns(allowedOriginPatterns);
         config.setAllowCredentials(true);
         config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));

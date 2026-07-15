@@ -10,6 +10,29 @@ function togglePassword(id, eye) {
     }
 }
 
+const DEMO_ADMIN_CREDENTIALS = Object.freeze({
+    email: "admin@example.com",
+    password: "Admin@123"
+});
+
+function fillAdminFields(credentials, messageText) {
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const message = document.getElementById("message");
+
+    if (!emailInput || !passwordInput) {
+        return;
+    }
+
+    emailInput.value = credentials.email;
+    passwordInput.value = credentials.password;
+
+    if (message) {
+        message.style.color = "#2563eb";
+        message.innerText = messageText;
+    }
+}
+
 async function fillAdminLoginDefaults() {
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
@@ -22,18 +45,19 @@ async function fillAdminLoginDefaults() {
         const response = await fetch(apiUrl("/auth/admin-login-defaults"));
 
         if (!response.ok || response.status === 204) {
+            fillAdminFields(DEMO_ADMIN_CREDENTIALS, "Demo admin credentials filled.");
             return;
         }
 
         const defaults = await response.json();
-        emailInput.value = defaults.email || "";
-        passwordInput.value = defaults.password || "";
+        fillAdminFields({
+            email: defaults.email || DEMO_ADMIN_CREDENTIALS.email,
+            password: defaults.password || DEMO_ADMIN_CREDENTIALS.password
+        }, "Admin credentials filled.");
     } catch (error) {
-        console.info("Admin login defaults are not available.");
+        fillAdminFields(DEMO_ADMIN_CREDENTIALS, "Demo admin credentials filled.");
     }
 }
-
-document.addEventListener("DOMContentLoaded", fillAdminLoginDefaults);
 
 async function login() {
     const email = document.getElementById("email").value.trim();

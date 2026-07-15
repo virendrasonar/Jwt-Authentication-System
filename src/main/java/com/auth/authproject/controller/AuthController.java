@@ -1,7 +1,7 @@
 package com.auth.authproject.controller;
 
-import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -22,15 +22,22 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
+    private static final String DEMO_ADMIN_EMAIL = "admin@example.com";
+    private static final String DEMO_ADMIN_PASSWORD = "Admin@123";
 
     private final AuthService authService;
     private final PasswordResetService passwordResetService;
-    private final Environment environment;
+    private final String adminEmail;
+    private final String adminPassword;
 
-    public AuthController(AuthService authService, PasswordResetService passwordResetService, Environment environment) {
+    public AuthController(AuthService authService,
+                          PasswordResetService passwordResetService,
+                          @Value("${app.admin.email:}") String adminEmail,
+                          @Value("${app.admin.password:}") String adminPassword) {
         this.authService = authService;
         this.passwordResetService = passwordResetService;
-        this.environment = environment;
+        this.adminEmail = adminEmail;
+        this.adminPassword = adminPassword;
     }
     
     @GetMapping("/")
@@ -52,20 +59,12 @@ public class AuthController {
 
     @GetMapping("/admin-login-defaults")
     public ResponseEntity<Map<String, String>> adminLoginDefaults() {
-        if (!environment.matchesProfiles("local")) {
-            return ResponseEntity.noContent().build();
-        }
-
-        String adminEmail = environment.getProperty("app.admin.email", "");
-        String adminPassword = environment.getProperty("app.admin.password", "");
-
-        if (adminEmail.isBlank() || adminPassword.isBlank()) {
-            return ResponseEntity.noContent().build();
-        }
+        String resolvedAdminEmail = adminEmail.isBlank() ? DEMO_ADMIN_EMAIL : adminEmail;
+        String resolvedAdminPassword = adminPassword.isBlank() ? DEMO_ADMIN_PASSWORD : adminPassword;
 
         return ResponseEntity.ok(Map.of(
-                "email", adminEmail,
-                "password", adminPassword
+                "email", resolvedAdminEmail,
+                "password", resolvedAdminPassword
         ));
     }
 

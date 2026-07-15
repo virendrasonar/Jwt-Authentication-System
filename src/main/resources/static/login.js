@@ -10,6 +10,31 @@ function togglePassword(id, eye) {
     }
 }
 
+async function fillAdminLoginDefaults() {
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+
+    if (!emailInput || !passwordInput) {
+        return;
+    }
+
+    try {
+        const response = await fetch(apiUrl("/auth/admin-login-defaults"));
+
+        if (!response.ok || response.status === 204) {
+            return;
+        }
+
+        const defaults = await response.json();
+        emailInput.value = defaults.email || "";
+        passwordInput.value = defaults.password || "";
+    } catch (error) {
+        console.info("Admin login defaults are not available.");
+    }
+}
+
+document.addEventListener("DOMContentLoaded", fillAdminLoginDefaults);
+
 async function login() {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;

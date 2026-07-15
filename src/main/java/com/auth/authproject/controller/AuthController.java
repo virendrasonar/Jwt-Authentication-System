@@ -1,7 +1,10 @@
 package com.auth.authproject.controller;
 
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 import com.auth.authproject.dto.AuthRequest;
 import com.auth.authproject.dto.RegisterRequest;
@@ -22,10 +25,12 @@ public class AuthController {
 
     private final AuthService authService;
     private final PasswordResetService passwordResetService;
+    private final Environment environment;
 
-    public AuthController(AuthService authService, PasswordResetService passwordResetService) {
+    public AuthController(AuthService authService, PasswordResetService passwordResetService, Environment environment) {
         this.authService = authService;
         this.passwordResetService = passwordResetService;
+        this.environment = environment;
     }
     
     @GetMapping("/")
@@ -43,6 +48,25 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody AuthRequest request) {
         return ResponseEntity.ok(authService.login(request));
+    }
+
+    @GetMapping("/admin-login-defaults")
+    public ResponseEntity<Map<String, String>> adminLoginDefaults() {
+        if (!environment.matchesProfiles("local")) {
+            return ResponseEntity.noContent().build();
+        }
+
+        String adminEmail = environment.getProperty("app.admin.email", "");
+        String adminPassword = environment.getProperty("app.admin.password", "");
+
+        if (adminEmail.isBlank() || adminPassword.isBlank()) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(Map.of(
+                "email", adminEmail,
+                "password", adminPassword
+        ));
     }
 
     // 🔹 REFRESH TOKEN

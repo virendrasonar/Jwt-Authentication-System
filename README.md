@@ -63,8 +63,6 @@ https://github.com/your-username/jwt-authentication-system
 - [Screenshots](#-screenshots)
 - [Design Principles](#-design-principles)
 - [Key Learning Outcomes](#-key-learning-outcomes)
-- [Contributing](#-contributing)
-- [License](#-license)
 - [Contact](#-contact)
 
 ## ✨ Features
@@ -683,26 +681,6 @@ spring.jpa.show-sql=false
 - Creating DTO-based request validation with Jakarta Bean Validation.
 - Handling application exceptions through centralized REST advice.
 - Preparing a Spring Boot application for Railway deployment with PostgreSQL.
-
-## 🤝 Contributing
-
-Contributions are welcome. Please follow a clean and reviewable workflow:
-
-1. Fork the repository.
-2. Create a feature branch.
-3. Make focused changes.
-4. Add or update tests when applicable.
-5. Open a pull request with a clear summary.
-
-```bash
-git checkout -b feature/add-refresh-token-rotation
-git commit -m "Add refresh token rotation"
-git push origin feature/add-refresh-token-rotation
-```
-
-## 📄 License
-
-This project is intended for learning, portfolio demonstration, and open-source collaboration. Add a license file before distributing it under a specific open-source license.
 
 ## 📬 Contact
 

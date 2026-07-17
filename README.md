@@ -555,28 +555,6 @@ spring.jpa.show-sql=false
 | Admin User Management | Admin-only user management API workflow |
 | Railway Deployment | Production deployment overview |
 
-## 🤝 Contributing
-
-Contributions are welcome. To contribute professionally:
-
-1. Fork the repository.
-2. Create a feature branch.
-3. Commit changes with clear messages.
-4. Add or update tests where applicable.
-5. Open a pull request with a concise description of the change.
-
-```bash
-git checkout -b feature/add-token-rotation
-git commit -m "Add refresh token rotation"
-git push origin feature/add-token-rotation
-```
-
-## 📄 License
-
-This project is licensed under the MIT License. You are free to use, modify, and distribute it with attribution.
-
----
-
 <p align="center">
   Built with Java, Spring Boot, Spring Security, JWT, and clean backend engineering practices.
 </p>

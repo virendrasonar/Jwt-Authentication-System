@@ -4,7 +4,7 @@
 
 ### Secure Spring Boot Authentication Backend with JWT, Refresh Tokens, RBAC, and Admin User Management
 
-![Project Banner](docs/images/banner-placeholder.png)
+![JWT Authentication System Banner](docs/images/jwt-authentication-banner.png)
 
 [![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk)](https://www.oracle.com/java/)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)

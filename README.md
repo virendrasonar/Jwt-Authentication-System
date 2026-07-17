@@ -1,36 +1,87 @@
+<div align="center">
+
 # JWT Authentication System
 
-> A production-ready Spring Boot authentication backend with JWT access tokens, refresh tokens, role-based authorization, password reset support, and admin user management.
+### Secure Spring Boot Authentication Backend with JWT, Refresh Tokens, RBAC, and Admin User Management
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk" alt="Java 21" />
-  <img src="https://img.shields.io/badge/Spring%20Boot-3.x-brightgreen?style=for-the-badge&logo=springboot" alt="Spring Boot" />
-  <img src="https://img.shields.io/badge/Spring%20Security-6.x-6DB33F?style=for-the-badge&logo=springsecurity" alt="Spring Security" />
-  <img src="https://img.shields.io/badge/JWT-JSON%20Web%20Token-black?style=for-the-badge&logo=jsonwebtokens" alt="JWT" />
-  <img src="https://img.shields.io/badge/MySQL-Local-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
-  <img src="https://img.shields.io/badge/PostgreSQL-Production-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" />
-  <img src="https://img.shields.io/badge/Maven-Build-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white" alt="Maven" />
-</p>
+![Project Banner](docs/images/banner-placeholder.png)
 
-## 📌 Project Description
+[![Java](https://img.shields.io/badge/Java-21-orange?style=for-the-badge&logo=openjdk)](https://www.oracle.com/java/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.x-6DB33F?style=for-the-badge&logo=springboot&logoColor=white)](https://spring.io/projects/spring-boot)
+[![Spring Security](https://img.shields.io/badge/Spring%20Security-6.x-6DB33F?style=for-the-badge&logo=springsecurity&logoColor=white)](https://spring.io/projects/spring-security)
+[![JWT](https://img.shields.io/badge/JWT-Authentication-black?style=for-the-badge&logo=jsonwebtokens)](https://jwt.io/)
+[![MySQL](https://img.shields.io/badge/MySQL-Local-4479A1?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Production-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
+[![Maven](https://img.shields.io/badge/Maven-Build-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white)](https://maven.apache.org/)
+[![Railway](https://img.shields.io/badge/Railway-Deployment-0B0D0E?style=for-the-badge&logo=railway&logoColor=white)](https://railway.app/)
 
-JWT Authentication System is a secure backend authentication service built with Java, Spring Boot, Spring Security, JWT, Spring Data JPA, Hibernate, MySQL, and PostgreSQL. It provides a complete authentication workflow for user registration, login, token refresh, logout, password reset, protected profile access, and role-based admin operations.
+</div>
 
-The application follows a clean layered architecture with Controllers, Services, Repositories, DTOs, Entities, Security filters, and centralized exception handling. It is designed to demonstrate production-oriented backend engineering practices suitable for real-world REST APIs and recruiter-facing GitHub portfolios.
+## 📌 Project Overview
+
+JWT Authentication System is a secure backend authentication service built with Java 21, Spring Boot, Spring Security, JWT, Spring Data JPA, Hibernate, MySQL, PostgreSQL, Maven, and Railway. It provides a complete authentication workflow for user registration, login, JWT-based authorization, refresh tokens, logout, password reset, protected profile access, and admin-only user management.
+
+The application follows a layered Controller -> Service -> Repository -> Database architecture and secures REST APIs through a stateless Spring Security filter chain. It is designed as a production-quality portfolio project that demonstrates clean backend engineering, secure API design, validation, centralized exception handling, and deployment-ready configuration.
+
+## 🔗 Live Demo
+
+| Resource | Link |
+| --- | --- |
+| Live Application | [https://jwt-authentication-system-production.up.railway.app/login.html](https://jwt-authentication-system-production.up.railway.app/login.html) |
+| Register Page | [https://jwt-authentication-system-production.up.railway.app/signup.html](https://jwt-authentication-system-production.up.railway.app/signup.html) |
+
+## 📦 Repository
+
+```text
+https://github.com/your-username/jwt-authentication-system
+```
+
+## 📚 Table of Contents
+
+- [Project Overview](#-project-overview)
+- [Live Demo](#-live-demo)
+- [Repository](#-repository)
+- [Features](#-features)
+- [Technologies Used](#-technologies-used)
+- [Project Statistics](#-project-statistics)
+- [Architecture](#-architecture)
+- [Project Structure](#-project-structure)
+- [API Modules](#-api-modules)
+- [Authentication Flow](#-authentication-flow)
+- [Security Features](#-security-features)
+- [Database Design](#-database-design)
+- [Installation & Setup](#-installation--setup)
+- [Configuration](#-configuration)
+- [Running the Project](#-running-the-project)
+- [API Endpoints](#-api-endpoints)
+- [Sample Request & Response JSON](#-sample-request--response-json)
+- [JWT Authentication Example](#-jwt-authentication-example)
+- [Role-Based Access Control](#-role-based-access-control)
+- [Exception Handling](#-exception-handling)
+- [Validation](#-validation)
+- [Deployment on Railway](#-deployment-on-railway)
+- [Screenshots](#-screenshots)
+- [Design Principles](#-design-principles)
+- [Key Learning Outcomes](#-key-learning-outcomes)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Contact](#-contact)
 
 ## ✨ Features
 
-| Category | Capability |
+| Category | Description |
 | --- | --- |
-| Authentication | User registration, login, logout, JWT access tokens, refresh tokens |
-| Authorization | Role-based access control for `USER` and `ADMIN` accounts |
-| Security | Stateless Spring Security filter chain, BCrypt password hashing, protected REST APIs |
-| User Management | Admin-only user listing, creation, update, and deletion |
-| Password Recovery | Forgot password and reset password token workflow |
-| Validation | Bean Validation for email, name, password, role, and token fields |
-| Persistence | JPA/Hibernate entities with MySQL for local development and PostgreSQL for production |
-| Deployment | Railway-ready configuration using environment variables |
-| Frontend Assets | Static login, signup, dashboard, forgot password, and reset password pages |
+| User Registration | Creates new users with validated name, email, and password fields. |
+| User Login | Authenticates users and returns an access token, refresh token, and user profile data. |
+| JWT Authentication | Secures protected APIs using bearer tokens validated by a custom Spring Security filter. |
+| Refresh Tokens | Persists refresh tokens in the database to issue new access tokens without re-login. |
+| Logout | Revokes refresh tokens to invalidate active refresh sessions. |
+| Password Reset | Supports forgot-password and reset-password workflows using database-backed reset tokens. |
+| Role-Based Authorization | Restricts admin APIs to users with the `ADMIN` role. |
+| Admin User Management | Allows admins to list, create, update, and delete users with safety checks. |
+| Centralized Error Handling | Returns consistent validation and runtime error responses. |
+| Railway Deployment | Supports production deployment with PostgreSQL and environment variables. |
+| Static UI Pages | Includes login, signup, dashboard, forgot-password, and reset-password pages. |
 
 ## 🧰 Technologies Used
 
@@ -40,34 +91,51 @@ The application follows a clean layered architecture with Controllers, Services,
 | Framework | Spring Boot |
 | Security | Spring Security, JWT, BCrypt |
 | Persistence | Spring Data JPA, Hibernate |
-| Databases | MySQL, PostgreSQL |
+| Local Database | MySQL |
+| Production Database | PostgreSQL |
 | Build Tool | Maven |
 | Validation | Jakarta Bean Validation |
 | Deployment | Railway |
 | Testing | Spring Boot Test, Spring Security Test, H2 |
 
+## 📊 Project Statistics
+
+| Metric | Value |
+| --- | ---: |
+| REST APIs | 15 |
+| Controllers | 5 |
+| Services | 3 |
+| Entities | 3 |
+| Repositories | 3 |
+| Database Tables | 3 |
+| Security | Spring Security + JWT |
+| Authentication | JWT + Refresh Tokens |
+| Authorization | RBAC |
+| Deployment Target | Railway |
+
 ## 🏗️ Architecture
 
-The project follows a layered Controller -> Service -> Repository -> Database architecture.
+The project uses a clean layered architecture where each layer has a clear responsibility. Controllers expose REST endpoints, services contain business logic, repositories handle persistence, and the database stores users and token records.
 
 ```mermaid
-flowchart LR
-    Client["Client / REST Consumer"] --> Controller["Controller Layer"]
+graph TD
+    Client["Client / Browser / Postman"] --> Security["Spring Security Filter Chain"]
+    Security --> Controller["Controller Layer"]
     Controller --> Service["Service Layer"]
     Service --> Repository["Repository Layer"]
     Repository --> Database[("MySQL / PostgreSQL")]
-
-    Security["Spring Security + JWT Filter"] --> Controller
-    Service --> TokenStore[("Refresh Tokens / Reset Tokens")]
+    Service --> JwtService["JWT Service"]
+    Service --> PasswordEncoder["BCrypt Password Encoder"]
 ```
 
 | Layer | Responsibility |
 | --- | --- |
-| Controller | Exposes REST endpoints and handles HTTP request/response mapping |
-| Service | Contains authentication, token, password reset, and business logic |
-| Repository | Provides database access through Spring Data JPA |
-| Entity | Maps Java objects to relational database tables |
-| Security | Validates JWTs and enforces protected/admin-only route access |
+| Client | Sends HTTP requests through browser pages, Postman, or another REST client. |
+| Security Filter Chain | Validates JWT tokens and applies route-level authorization rules. |
+| Controller | Handles REST endpoints and maps request/response DTOs. |
+| Service | Implements authentication, refresh token, password reset, and business rules. |
+| Repository | Uses Spring Data JPA to access relational database tables. |
+| Database | Stores users, refresh tokens, and password reset tokens. |
 
 ## 📁 Project Structure
 
@@ -96,6 +164,9 @@ JWT Authentication System
 │   │   │       ├── exception
 │   │   │       │   └── GlobalExceptionHandler.java
 │   │   │       ├── repository
+│   │   │       │   ├── PasswordResetTokenRepository.java
+│   │   │       │   ├── RefreshTokenRepository.java
+│   │   │       │   └── UserRepository.java
 │   │   │       ├── security
 │   │   │       │   ├── JwtFilter.java
 │   │   │       │   └── JwtService.java
@@ -106,6 +177,11 @@ JWT Authentication System
 │   │   │       └── AuthprojectApplication.java
 │   │   └── resources
 │   │       ├── static
+│   │       │   ├── login.html
+│   │       │   ├── signup.html
+│   │       │   ├── dashboard.html
+│   │       │   ├── forgot-password.html
+│   │       │   └── reset-password.html
 │   │       ├── application.properties
 │   │       ├── application-local.properties
 │   │       └── application-prod.properties
@@ -121,45 +197,57 @@ JWT Authentication System
 
 | Module | Description |
 | --- | --- |
-| Authentication Module | Handles registration, login, token refresh, and logout |
-| Password Reset Module | Generates and validates password reset tokens |
-| Dashboard Module | Returns authenticated user profile details |
-| Admin User Module | Provides admin-only user management APIs |
-| Security Module | Processes JWT validation and Spring Security authorization |
+| Authentication Module | Handles registration, login, token refresh, logout, and admin login defaults. |
+| Password Reset Module | Generates reset tokens and updates passwords through validated requests. |
+| Dashboard Module | Returns authenticated user dashboard/profile data. |
+| Admin User Module | Provides admin-only APIs for user listing, lookup, creation, update, and deletion. |
+| Security Module | Validates JWTs and enforces Spring Security authorization rules. |
 
 ## 🔐 Authentication Flow
 
 ```mermaid
 sequenceDiagram
-    participant Client
-    participant AuthController
-    participant AuthService
-    participant JwtService
+    participant User
+    participant Server
+    participant Security as Spring Security
     participant Database
 
-    Client->>AuthController: POST /auth/login
-    AuthController->>AuthService: Validate credentials
-    AuthService->>Database: Load user by email
-    Database-->>AuthService: User record
-    AuthService->>AuthService: Verify BCrypt password
-    AuthService->>JwtService: Generate access token
-    AuthService->>Database: Persist refresh token
-    AuthService-->>AuthController: AuthResponse
-    AuthController-->>Client: Access token + refresh token
+    User->>Server: POST /auth/login
+    Server->>Database: Load user by email
+    Database-->>Server: User record
+    Server->>Server: Verify BCrypt password
+    Server->>Database: Save refresh token
+    Server-->>User: JWT access token + refresh token
+    User->>Security: API request with Authorization header
+    Security->>Security: Validate JWT signature and claims
+    Security->>Server: Allow protected request
+    Server-->>User: Protected resource
 ```
 
 ## 🛡️ Security Features
 
-| Feature | Implementation |
+| Security Area | Implementation |
 | --- | --- |
-| Stateless sessions | `SessionCreationPolicy.STATELESS` |
-| Password hashing | BCrypt via `PasswordEncoder` |
-| JWT validation | Custom `JwtFilter` before `UsernamePasswordAuthenticationFilter` |
-| Public routes | Static pages and `/auth/**` endpoints |
-| Protected routes | Any non-public endpoint requires authentication |
-| Admin routes | `/admin/**` requires `ADMIN` role |
-| CSRF | Disabled for stateless REST API usage |
-| CORS | Configurable via `CORS_ALLOWED_ORIGINS` |
+| JWT Authentication | Access tokens are sent as bearer tokens in the `Authorization` header. |
+| Refresh Tokens | Refresh tokens are stored in the database and used to request new access tokens. |
+| BCrypt Password Hashing | Passwords are encoded using BCrypt through Spring Security's `PasswordEncoder`. |
+| Role-Based Access Control | `/admin/**` endpoints require the `ADMIN` role. |
+| Stateless Authentication | Server sessions are disabled with `SessionCreationPolicy.STATELESS`. |
+| Spring Security Filter Chain | A custom `JwtFilter` runs before `UsernamePasswordAuthenticationFilter`. |
+| Protected Routes | Public routes are explicitly permitted; all other routes require authentication. |
+| CSRF Configuration | CSRF is disabled for stateless REST API usage. |
+| CORS Configuration | Allowed origins are controlled through `CORS_ALLOWED_ORIGINS`. |
+
+### Protected Route Strategy
+
+| Route Group | Access Level |
+| --- | --- |
+| `/auth/**` | Public |
+| Static pages and assets | Public |
+| `/dashboard` | Authenticated users |
+| `/test/secure` | Authenticated users |
+| `/admin/**` | Admin users only |
+| Any other route | Authenticated users |
 
 ## 🗄️ Database Design
 
@@ -197,9 +285,9 @@ erDiagram
 
 | Table | Purpose |
 | --- | --- |
-| `users` | Stores registered users, encrypted passwords, roles, and audit timestamps |
-| `refresh_tokens` | Stores refresh tokens associated with users |
-| `password_reset_tokens` | Stores password reset tokens, expiry status, and usage metadata |
+| `users` | Stores registered users, encrypted passwords, roles, and audit timestamps. |
+| `refresh_tokens` | Stores refresh tokens associated with users. |
+| `password_reset_tokens` | Stores reset tokens, expiry metadata, usage status, and owning users. |
 
 ## ⚙️ Installation & Setup
 
@@ -215,7 +303,7 @@ erDiagram
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/VIRENDRA/jwt-authentication-system.git
+git clone https://github.com/your-username/jwt-authentication-system.git
 cd jwt-authentication-system
 ```
 
@@ -239,7 +327,7 @@ mvnw.cmd clean install
 
 ## 🔧 Configuration
 
-The application uses profile-based configuration.
+The application uses profile-based configuration. Keep real credentials in environment variables and never commit production secrets to GitHub.
 
 ### `application.properties`
 
@@ -249,12 +337,12 @@ server.port=${PORT:8080}
 
 spring.jpa.hibernate.ddl-auto=update
 
-jwt.secret=${JWT_SECRET:myverysecuresecretkeymyverysecuresecretkey123}
+jwt.secret=${JWT_SECRET:<your-secret>}
 jwt.expiration=${JWT_EXPIRATION:900000}
 
 app.admin.name=${ADMIN_NAME:Admin}
 app.admin.email=${ADMIN_EMAIL:admin@example.com}
-app.admin.password=${ADMIN_PASSWORD:Admin@123}
+app.admin.password=${ADMIN_PASSWORD:<your-admin-password>}
 
 app.cors.allowed-origins=${CORS_ALLOWED_ORIGINS:https://jwt-authentication-system-production.up.railway.app}
 ```
@@ -264,7 +352,7 @@ app.cors.allowed-origins=${CORS_ALLOWED_ORIGINS:https://jwt-authentication-syste
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/jwt_auth_db
 spring.datasource.username=root
-spring.datasource.password=LocalMysqlPassword@2026
+spring.datasource.password=${DATABASE_PASSWORD:<your-password>}
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
 spring.jpa.hibernate.ddl-auto=update
@@ -278,11 +366,12 @@ spring.jpa.show-sql=true
 | --- | --- | --- |
 | `SPRING_PROFILES_ACTIVE` | Active Spring profile | `local` or `prod` |
 | `PORT` | Server port | `8080` |
-| `JWT_SECRET` | Secret key used to sign JWTs | `JwtAuthSystemProductionSecretKey2026!` |
+| `JWT_SECRET` | Secret key used to sign JWTs | `<your-secret>` |
 | `JWT_EXPIRATION` | Access token expiration in milliseconds | `900000` |
+| `DATABASE_PASSWORD` | Local database password | `<your-password>` |
 | `ADMIN_NAME` | Bootstrap admin display name | `Admin` |
 | `ADMIN_EMAIL` | Bootstrap admin email | `admin@example.com` |
-| `ADMIN_PASSWORD` | Bootstrap admin password | `Admin@123` |
+| `ADMIN_PASSWORD` | Bootstrap admin password | `<your-admin-password>` |
 | `CORS_ALLOWED_ORIGINS` | Allowed frontend origins | `https://jwt-authentication-system-production.up.railway.app` |
 | `DATABASE_URL` | Railway PostgreSQL database URL | Provided by Railway |
 
@@ -325,30 +414,32 @@ http://localhost:8080
 
 | Method | Endpoint | Access | Description |
 | --- | --- | --- | --- |
-| `POST` | `/auth/register` | Public | Register a new user |
-| `POST` | `/auth/login` | Public | Authenticate a user and return tokens |
-| `POST` | `/auth/refresh` | Public | Generate a new access token from a refresh token |
-| `POST` | `/auth/logout` | Public | Revoke a refresh token |
-| `POST` | `/auth/forgot-password` | Public | Create a password reset token |
-| `POST` | `/auth/reset-password` | Public | Reset password using a valid reset token |
-| `GET` | `/auth/admin-login-defaults` | Public | Return configured admin demo credentials |
+| `GET` | `/auth/` | Public | Redirects to the login page. |
+| `POST` | `/auth/register` | Public | Register a new user. |
+| `POST` | `/auth/login` | Public | Authenticate a user and return tokens. |
+| `GET` | `/auth/admin-login-defaults` | Public | Return configured admin demo credentials. |
+| `POST` | `/auth/refresh` | Public | Generate a new access token from a refresh token. |
+| `POST` | `/auth/logout` | Public | Revoke a refresh token. |
+| `POST` | `/auth/forgot-password` | Public | Create a password reset token. |
+| `POST` | `/auth/reset-password` | Public | Reset password using a valid reset token. |
 
 ### Protected User Endpoints
 
 | Method | Endpoint | Access | Description |
 | --- | --- | --- | --- |
-| `GET` | `/dashboard` | Authenticated | Return current user dashboard/profile data |
-| `GET` | `/test/secure` | Authenticated | Verify authenticated access |
+| `GET` | `/` | Public | Redirects to `login.html`. |
+| `GET` | `/dashboard` | Authenticated | Return current user dashboard/profile data. |
+| `GET` | `/test/secure` | Authenticated | Verify authenticated access. |
 
 ### Admin Endpoints
 
 | Method | Endpoint | Access | Description |
 | --- | --- | --- | --- |
-| `GET` | `/admin/users` | Admin | List all users |
-| `GET` | `/admin/users/{id}` | Admin | Get a user by ID |
-| `POST` | `/admin/users` | Admin | Create a user |
-| `PUT` | `/admin/users/{id}` | Admin | Update a user's name or role |
-| `DELETE` | `/admin/users/{id}` | Admin | Delete a user |
+| `GET` | `/admin/users` | Admin | List all users. |
+| `GET` | `/admin/users/{id}` | Admin | Get a user by ID. |
+| `POST` | `/admin/users` | Admin | Create a user. |
+| `PUT` | `/admin/users/{id}` | Admin | Update a user's name or role. |
+| `DELETE` | `/admin/users/{id}` | Admin | Delete a user and related token records. |
 
 ## 🧪 Sample Request & Response JSON
 
@@ -363,7 +454,7 @@ Content-Type: application/json
 {
   "name": "Virendra Kumar",
   "email": "virendra@example.com",
-  "password": "User@1234"
+  "password": "StrongPass@123"
 }
 ```
 
@@ -388,7 +479,7 @@ Content-Type: application/json
 ```json
 {
   "email": "virendra@example.com",
-  "password": "User@1234"
+  "password": "StrongPass@123"
 }
 ```
 
@@ -400,6 +491,32 @@ Content-Type: application/json
   "name": "Virendra Kumar",
   "email": "virendra@example.com",
   "role": "USER"
+}
+```
+
+### Refresh Token
+
+```http
+POST /auth/refresh
+Content-Type: application/json
+```
+
+```json
+{
+  "refreshToken": "0f3c2d1b-37b1-4a6d-950d-e0cf1c996e12"
+}
+```
+
+### Logout
+
+```http
+POST /auth/logout
+Content-Type: application/json
+```
+
+```json
+{
+  "refreshToken": "0f3c2d1b-37b1-4a6d-950d-e0cf1c996e12"
 }
 ```
 
@@ -454,8 +571,8 @@ The system supports two primary roles.
 
 | Role | Permissions |
 | --- | --- |
-| `USER` | Register, login, access dashboard, refresh token, logout, reset password |
-| `ADMIN` | All user permissions plus user listing, creation, update, deletion, and role management |
+| `USER` | Register, login, access dashboard, refresh token, logout, reset password. |
+| `ADMIN` | All user permissions plus user listing, creation, update, deletion, and role management. |
 
 Admin endpoints are protected with Spring Security:
 
@@ -469,15 +586,16 @@ Admin safeguards include:
 - An admin cannot delete their own account while logged in.
 - An admin cannot change their own role.
 - The system prevents removing the last remaining admin account.
+- Deleting a user also removes related refresh and password reset token records.
 
 ## 🚨 Exception Handling
 
-The application uses centralized exception handling with `@RestControllerAdvice`.
+The application uses centralized exception handling with `@RestControllerAdvice`, which keeps API error responses consistent across validation failures and business rule errors.
 
-| Exception Type | Response |
-| --- | --- |
-| `RuntimeException` | Returns HTTP `400` with timestamp, message, and status |
-| `MethodArgumentNotValidException` | Returns HTTP `400` with field-level validation errors |
+| Exception Type | HTTP Status | Response Body |
+| --- | --- | --- |
+| `RuntimeException` | `400 Bad Request` | `timestamp`, `message`, `status` |
+| `MethodArgumentNotValidException` | `400 Bad Request` | `timestamp`, `status`, `errors` |
 
 Example runtime error:
 
@@ -491,15 +609,15 @@ Example runtime error:
 
 ## ✅ Validation
 
-Validation is applied at the DTO layer using Jakarta Bean Validation annotations.
+Validation is applied at the DTO layer using Jakarta Bean Validation. Invalid requests are rejected before reaching business logic, which keeps service methods focused and predictable.
 
 | Field | Rules |
 | --- | --- |
-| `name` | Required, 3-50 characters, letters and spaces only |
-| `email` | Required, valid email format |
-| `password` | Required, 8-20 characters, uppercase, lowercase, number, and special character |
-| `role` | Must be `USER` or `ADMIN` |
-| `token` | Required for password reset |
+| `name` | Required, 3-50 characters, letters and spaces only. |
+| `email` | Required, valid email format. |
+| `password` | Required, 8-20 characters, uppercase, lowercase, number, and special character. |
+| `role` | Must be `USER` or `ADMIN`. |
+| `token` | Required for password reset. |
 
 ## 🚀 Deployment on Railway
 
@@ -511,18 +629,20 @@ The project is ready for Railway deployment using PostgreSQL in production.
 2. Create a new Railway project.
 3. Connect the GitHub repository.
 4. Add a PostgreSQL database service.
-5. Configure environment variables.
+5. Configure production environment variables.
 6. Deploy the Spring Boot service.
+7. Verify the login, registration, dashboard, and admin flows.
 
 ### Recommended Railway Variables
 
 ```env
 SPRING_PROFILES_ACTIVE=prod
-JWT_SECRET=JwtAuthSystemProductionSecretKey2026!
+JWT_SECRET=<your-secret>
 JWT_EXPIRATION=900000
+DATABASE_PASSWORD=<your-password>
 ADMIN_NAME=Admin
 ADMIN_EMAIL=admin@example.com
-ADMIN_PASSWORD=Admin@123
+ADMIN_PASSWORD=<your-admin-password>
 CORS_ALLOWED_ORIGINS=https://jwt-authentication-system-production.up.railway.app
 ```
 
@@ -533,35 +653,66 @@ spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
 spring.jpa.show-sql=false
 ```
 
-## 🔮 Future Enhancements
+## 🖼️ Screenshots
 
-- Email delivery integration for password reset links.
-- Refresh token rotation with device/session metadata.
-- Account verification through email OTP.
-- Rate limiting for login and password reset endpoints.
-- Audit logs for admin user management actions.
-- Docker Compose setup for local MySQL development.
-- OpenAPI/Swagger documentation.
-- CI/CD pipeline with GitHub Actions.
-- Unit and integration test expansion for authentication and authorization paths.
-
-## 🖼️ Screenshots Placeholder
-
-| Screen | Description |
+| Screen | Placeholder |
 | --- | --- |
-| Login Page | Static login UI for authenticating users |
-| Signup Page | Static registration UI with client-side API integration |
-| Dashboard Page | Protected user dashboard rendered after authentication |
-| Admin User Management | Admin-only user management API workflow |
-| Railway Deployment | Production deployment overview |
+| Login Page | `docs/images/login-page.png` |
+| Register Page | `docs/images/register-page.png` |
+| Dashboard | `docs/images/dashboard.png` |
+| Admin Panel | `docs/images/admin-panel.png` |
+| Postman Testing | `docs/images/postman-testing.png` |
+| Railway Deployment | `docs/images/railway-deployment.png` |
 
-## 👨‍💻 Author
+## 🧭 Design Principles
+
+- Keep authentication stateless and scalable.
+- Separate controller, service, repository, security, DTO, and entity responsibilities.
+- Validate input at the API boundary.
+- Store passwords securely using BCrypt hashing.
+- Use environment variables for sensitive deployment configuration.
+- Keep admin operations explicit, restricted, and protected by role checks.
+- Return consistent API responses for validation and application errors.
+
+## 🎯 Key Learning Outcomes
+
+- Building secure REST APIs with Spring Boot and Spring Security.
+- Implementing JWT access tokens and database-backed refresh tokens.
+- Applying role-based access control for admin-only endpoints.
+- Designing layered backend architecture with Spring Data JPA and Hibernate.
+- Creating DTO-based request validation with Jakarta Bean Validation.
+- Handling application exceptions through centralized REST advice.
+- Preparing a Spring Boot application for Railway deployment with PostgreSQL.
+
+## 🤝 Contributing
+
+Contributions are welcome. Please follow a clean and reviewable workflow:
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Make focused changes.
+4. Add or update tests when applicable.
+5. Open a pull request with a clear summary.
+
+```bash
+git checkout -b feature/add-refresh-token-rotation
+git commit -m "Add refresh token rotation"
+git push origin feature/add-refresh-token-rotation
+```
+
+## 📄 License
+
+This project is intended for learning, portfolio demonstration, and open-source collaboration. Add a license file before distributing it under a specific open-source license.
+
+## 📬 Contact
 
 **Virendra Sonar**  
 Java Full Stack Developer
 
-LinkedIn: [www.linkedin.com/in/virendra-sonar](https://www.linkedin.com/in/virendra-sonar)  
-Email: [virendrasonar187@gmail.com](mailto:virendrasonar187@gmail.com)
+| Platform | Details |
+| --- | --- |
+| LinkedIn | [www.linkedin.com/in/virendra-sonar](https://www.linkedin.com/in/virendra-sonar) |
+| Email | [virendrasonar187@gmail.com](mailto:virendrasonar187@gmail.com) |
 
 <p align="center">
   Built with Java, Spring Boot, Spring Security, JWT, and clean backend engineering practices.

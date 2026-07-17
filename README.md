@@ -555,6 +555,14 @@ spring.jpa.show-sql=false
 | Admin User Management | Admin-only user management API workflow |
 | Railway Deployment | Production deployment overview |
 
+## 👨‍💻 Author
+
+**Virendra Sonar**  
+Java Full Stack Developer
+
+LinkedIn: [www.linkedin.com/in/virendra-sonar](https://www.linkedin.com/in/virendra-sonar)  
+Email: [virendrasonar187@gmail.com](mailto:virendrasonar187@gmail.com)
+
 <p align="center">
   Built with Java, Spring Boot, Spring Security, JWT, and clean backend engineering practices.
 </p>
